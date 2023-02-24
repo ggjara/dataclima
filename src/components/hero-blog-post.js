@@ -38,7 +38,7 @@ const HeroBlogPost = ({
             marginRight: 'auto',
             horizontalAlign: 'center',
             '& > :not(style)': {
-              m: 1,
+              mr: 1.5,
             },
           }}
         >
@@ -51,7 +51,7 @@ const HeroBlogPost = ({
           <Typography
             sx={{
               fontSize: '14px',
-              fontWeight: 'bold',
+              fontWeight: '600',
               color: 'var(--primary)',
               ':hover': {
                 textDecoration: 'underline',
@@ -61,7 +61,15 @@ const HeroBlogPost = ({
             {' '}
             <Link to={`/people/${author?.slug}`}>{author?.name}</Link>
           </Typography>
-          <Typography sx={{ fontSize: 14 }}>|</Typography>
+          {
+            <Typography
+              sx={{
+                fontSize: 14,
+              }}
+            >
+              |
+            </Typography>
+          }
           <Typography sx={{ fontSize: 14 }}>
             <time dateTime={rawDate}>{publishDate}</time>
           </Typography>

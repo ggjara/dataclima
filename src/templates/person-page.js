@@ -126,7 +126,16 @@ class PersonPageTemplate extends React.Component {
           <Grid2 container spacing={6}>
             <Grid2 xs={8} xsOffset={2} md={4} mdOffset={2}>
               <GatsbyImage
-                style={{ borderRadius: '50%' }}
+                className={{
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  transform: 'translateZ(0)',
+                }}
+                style={{
+                  borderRadius: '50%',
+                  overflow: 'hidden',
+                  transform: 'translateZ(0)',
+                }}
                 alt=""
                 image={person.image.gatsbyImage}
               />
