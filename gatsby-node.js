@@ -10,7 +10,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allContentfulBlogPost {
+        allContentfulBlogPost(sort: { publishDate: DESC }) {
           nodes {
             title
             slug
@@ -43,8 +43,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   if (posts.length > 0) {
     posts.forEach((post, index) => {
-      const previousPostSlug = index === 0 ? null : posts[index - 1].slug
-      const nextPostSlug =
+      const nextPostSlug = index === 0 ? null : posts[index - 1].slug
+      const previousPostSlug =
         index === posts.length - 1 ? null : posts[index + 1].slug
 
       createPage({
