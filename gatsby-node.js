@@ -5,6 +5,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   // Define a template for blog post
   const blogPost = path.resolve('./src/templates/blog-post.js')
+  const personPage = path.resolve('./src/templates/person-page.js')
 
   const result = await graphql(
     `
@@ -13,6 +14,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           nodes {
             title
             slug
+          }
+        }
+        allContentfulPerson {
+          nodes {
+            name
+            id
           }
         }
       }
@@ -28,6 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   }
 
   const posts = result.data.allContentfulBlogPost.nodes
+  const persons = result.data.allContentfulPerson.nodes
 
   // Create blog posts pages
   // But only if there's at least one blog post found in Contentful
@@ -46,6 +54,22 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           slug: post.slug,
           previousPostSlug,
           nextPostSlug,
+        },
+      })
+    })
+  }
+
+  // Create people
+  // But only if there's at least one person found in Contentful
+  // `context` is available in the template as a prop and as a variable in GraphQL
+
+  if (persons.length > 0) {
+    persons.forEach((person, index) => {
+      createPage({
+        path: `/people/${person.id}/`,
+        component: personPage,
+        context: {
+          id: person.id,
         },
       })
     })
