@@ -30,6 +30,7 @@ export const pageQuery = graphql`
         name
         company
         email
+        slug
         id
         github
         facebook

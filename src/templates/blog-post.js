@@ -47,7 +47,7 @@ class BlogPostTemplate extends React.Component {
         />
         <div className={styles.container}>
           <span className={styles.meta}>
-            <Link to={`/people/${post.author?.id}`} className={styles.link}>
+            <Link to={`/people/${post.author?.slug}`} className={styles.link}>
               {post.author?.name}
             </Link>{' '}
             &middot; <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
@@ -98,6 +98,7 @@ export const pageQuery = graphql`
       title
       author {
         id
+        slug
         name
       }
       publishDate(formatString: "MMMM Do, YYYY")

@@ -19,6 +19,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         allContentfulPerson {
           nodes {
             name
+            slug
             id
           }
         }
@@ -66,7 +67,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   if (persons.length > 0) {
     persons.forEach((person, index) => {
       createPage({
-        path: `/people/${person.id}/`,
+        path: `/people/${person.slug}/`,
         component: personPage,
         context: {
           id: person.id,
