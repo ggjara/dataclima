@@ -6,6 +6,7 @@ import { renderRichText } from 'gatsby-source-contentful/rich-text'
 import Container from './container'
 import Tags from './tags'
 import * as styles from './article-preview.module.css'
+import Grid2 from '@mui/material/Unstable_Grid2/Grid2'
 
 const ArticlePreview = ({ posts }) => {
   if (!posts) return null
@@ -13,10 +14,10 @@ const ArticlePreview = ({ posts }) => {
 
   return (
     <Container>
-      <ul className={styles.articleList}>
+      <Grid2 container spacing={6}>
         {posts.map((post) => {
           return (
-            <li key={post.slug}>
+            <Grid2 item xs={12} sm={6} md={4} key={post.slug}>
               <Link to={`/blog/${post.slug}`} className={styles.link}>
                 <GatsbyImage alt="" image={post.heroImage.gatsbyImage} />
                 <h2 className={styles.title}>{post.title}</h2>
@@ -28,10 +29,10 @@ const ArticlePreview = ({ posts }) => {
                 <small className="meta">{post.publishDate}</small>
                 <Tags tags={post.tags} />
               </div>
-            </li>
+            </Grid2>
           )
         })}
-      </ul>
+      </Grid2>
     </Container>
   )
 }

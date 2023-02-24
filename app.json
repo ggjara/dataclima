@@ -1,11 +1,13 @@
 {
-  "name": "Contentful Gatsby Starter",
-  "description": "Gatsby starter for a Contentful project.",
+  "name": "Dataclima",
+  "description": "Data and research for climate adaptation.",
   "keywords": [
     "contentful",
     "gatsby",
     "static",
-    "ssg"
+    "ssg",
+    "climate change",
+    "climate adaptation"
   ],
   "repository": "https://github.com/contentful-userland/gatsby-contentful-starter",
   "success_url": "/",

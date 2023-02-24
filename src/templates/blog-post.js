@@ -10,8 +10,13 @@ import readingTime from 'reading-time'
 import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
+import HeroBlogPost from '../components/hero-blog-post'
 import Tags from '../components/tags'
 import * as styles from './blog-post.module.css'
+
+import Avatar from '@mui/material/Avatar'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -40,45 +45,39 @@ class BlogPostTemplate extends React.Component {
           description={plainTextDescription}
           image={`http:${post.heroImage.resize.src}`}
         />
-        <Hero
+        <HeroBlogPost
           image={post.heroImage?.gatsbyImage}
           title={post.title}
           content={post.description}
+          author={post.author}
+          rawDate={post.rawDate}
+          publishDate={post.publishDate}
         />
-        <div className={styles.container}>
-          <span className={styles.meta}>
-            <Link to={`/people/${post.author?.slug}`} className={styles.link}>
-              {post.author?.name}
-            </Link>{' '}
-            &middot; <time dateTime={post.rawDate}>{post.publishDate}</time> –{' '}
-            {timeToRead} minute read
-          </span>
-          <div className={styles.article}>
-            <div className={styles.body}>
-              {post.body?.raw && renderRichText(post.body, options)}
-            </div>
-            <Tags tags={post.tags} />
-            {(previous || next) && (
-              <nav>
-                <ul className={styles.articleNavigation}>
-                  {previous && (
-                    <li>
-                      <Link to={`/blog/${previous.slug}`} rel="prev">
-                        ← {previous.title}
-                      </Link>
-                    </li>
-                  )}
-                  {next && (
-                    <li>
-                      <Link to={`/blog/${next.slug}`} rel="next">
-                        {next.title} →
-                      </Link>
-                    </li>
-                  )}
-                </ul>
-              </nav>
-            )}
+        <div className={styles.article}>
+          <div className={styles.body}>
+            {post.body?.raw && renderRichText(post.body, options)}
           </div>
+          <Tags tags={post.tags} />
+          {(previous || next) && (
+            <nav>
+              <ul className={styles.articleNavigation}>
+                {previous && (
+                  <li>
+                    <Link to={`/blog/${previous.slug}`} rel="prev">
+                      ← {previous.title}
+                    </Link>
+                  </li>
+                )}
+                {next && (
+                  <li>
+                    <Link to={`/blog/${next.slug}`} rel="next">
+                      {next.title} →
+                    </Link>
+                  </li>
+                )}
+              </ul>
+            </nav>
+          )}
         </div>
       </Layout>
     )
@@ -100,12 +99,17 @@ export const pageQuery = graphql`
         id
         slug
         name
+        image {
+          resize(height: 100, width: 100) {
+            src
+          }
+        }
       }
       publishDate(formatString: "MMMM Do, YYYY")
       rawDate: publishDate
       heroImage {
         gatsbyImage(layout: FULL_WIDTH, placeholder: BLURRED, width: 1280)
-        resize(height: 630, width: 1200) {
+        resize(height: 632, width: 1200) {
           src
         }
       }

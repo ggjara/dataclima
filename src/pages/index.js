@@ -5,6 +5,10 @@ import get from 'lodash/get'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
+import Typography from '@mui/material/Typography'
+import Divider from '@mui/material/Divider'
+import Container from '../components/container'
+import Box from '@mui/material/Box'
 
 class RootIndex extends React.Component {
   render() {
@@ -19,6 +23,20 @@ class RootIndex extends React.Component {
           content={pageHeader.subtitle}
           contentReady={true}
         />
+        <Box
+          sx={{
+            mt: 10,
+          }}
+        >
+          <Container>
+            <Typography variant="h4">Latest posts</Typography>
+            <Divider
+              sx={{
+                mt: 2,
+              }}
+            />
+          </Container>
+        </Box>
         <ArticlePreview posts={posts} />
       </Layout>
     )
