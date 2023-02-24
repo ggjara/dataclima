@@ -53,31 +53,33 @@ class BlogPostTemplate extends React.Component {
           rawDate={post.rawDate}
           publishDate={post.publishDate}
         />
-        <div className={styles.article}>
-          <div className={styles.body}>
-            {post.body?.raw && renderRichText(post.body, options)}
+        <div className={styles.container}>
+          <div className={styles.article}>
+            <div className={styles.body}>
+              {post.body?.raw && renderRichText(post.body, options)}
+            </div>
+            <Tags tags={post.tags} />
+            {(previous || next) && (
+              <nav>
+                <ul className={styles.articleNavigation}>
+                  {previous && (
+                    <li>
+                      <Link to={`/blog/${previous.slug}`} rel="prev">
+                        ← {previous.title}
+                      </Link>
+                    </li>
+                  )}
+                  {next && (
+                    <li>
+                      <Link to={`/blog/${next.slug}`} rel="next">
+                        {next.title} →
+                      </Link>
+                    </li>
+                  )}
+                </ul>
+              </nav>
+            )}
           </div>
-          <Tags tags={post.tags} />
-          {(previous || next) && (
-            <nav>
-              <ul className={styles.articleNavigation}>
-                {previous && (
-                  <li>
-                    <Link to={`/blog/${previous.slug}`} rel="prev">
-                      ← {previous.title}
-                    </Link>
-                  </li>
-                )}
-                {next && (
-                  <li>
-                    <Link to={`/blog/${next.slug}`} rel="next">
-                      {next.title} →
-                    </Link>
-                  </li>
-                )}
-              </ul>
-            </nav>
-          )}
         </div>
       </Layout>
     )
