@@ -29,7 +29,7 @@ class RootIndex extends React.Component {
           }}
         >
           <Container>
-            <Typography variant="h4">Latest posts</Typography>
+            <Typography variant="h4">Articles</Typography>
             <Divider
               sx={{
                 mt: 2,

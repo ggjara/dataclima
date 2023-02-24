@@ -8,6 +8,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import ArticlePreview from '../components/article-preview'
 import Layout from '../components/layout'
 import Button from '@mui/material/Button'
+import Box from '@mui/material/Box'
 import Grid2 from '@mui/material/Unstable_Grid2'
 import Paper from '@mui/material/Paper'
 import Container from '../components/container'
@@ -33,18 +34,58 @@ class PersonPageTemplate extends React.Component {
       },
     }
 
-    return (
-      <Layout location={this.props.location}>
-        <Container>
-          <Grid2 container spacing={2}>
-            <Grid2 item xs={0} sm={2}></Grid2>
-            <Grid2 item xs={12} sm={4}>
-              <GatsbyImage alt="" image={person.image.gatsbyImage} />
-            </Grid2>
-            <Grid2 item xs={12} sm={4}>
-              <Typography variant="h4" gutterBottom>
-                {person.name}
-              </Typography>
+    const NameAndSocial = () => {
+      return (
+        <div>
+          <Box>
+            <Typography
+              sx={{
+                textAlign: {
+                  xs: 'center',
+                  md: 'left',
+                },
+                marginTop: {
+                  xs: -2,
+                  md: 0,
+                },
+              }}
+              variant="h4"
+              gutterBottom
+            >
+              {person.name}
+            </Typography>
+            <Typography
+              sx={{
+                textAlign: {
+                  xs: 'center',
+                  md: 'left',
+                },
+                marginTop: {
+                  xs: -0.5,
+                  md: -1,
+                },
+              }}
+              variant="body1"
+              gutterBottom
+            >
+              {person.title} {'|'} <strong>{person.company}</strong>
+            </Typography>
+            <Box
+              sx={{
+                display: {
+                  xs: 'flex',
+                  md: 'block',
+                },
+                justifyContent: {
+                  xs: 'center',
+                  md: 'left',
+                },
+                marginTop: {
+                  xs: 2,
+                  md: 2,
+                },
+              }}
+            >
               <Stack direction="row" spacing={2}>
                 {person.email && (
                   <a href={`mailto:${person.email}`} target="_blank">
@@ -73,24 +114,37 @@ class PersonPageTemplate extends React.Component {
                   </a>
                 )}
               </Stack>
+            </Box>
+          </Box>
+        </div>
+      )
+    }
+
+    return (
+      <Layout location={this.props.location}>
+        <Container>
+          <Grid2 container spacing={6}>
+            <Grid2 xs={8} xsOffset={2} md={4} mdOffset={2}>
+              <GatsbyImage
+                style={{ borderRadius: '50%' }}
+                alt=""
+                image={person.image.gatsbyImage}
+              />
+            </Grid2>
+            <Grid2 xs={12} xsOffset={0} md={4} mdOffset={0}>
+              {NameAndSocial()}
               <Divider
                 sx={{
                   my: 2,
                 }}
               />
               <Typography variant="body1" gutterBottom>
-                {person.title}
-                <br />
-                {person.company}
-                <br />
-                {person.phone}
-                <br />
                 {person.shortBio && renderRichText(person.shortBio, options)}
               </Typography>
             </Grid2>
-            <Grid2 item xs={0} sm={2}></Grid2>
           </Grid2>
         </Container>
+
         <Container>
           <Typography variant="h4">Posts</Typography>
           <Divider

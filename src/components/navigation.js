@@ -15,14 +15,14 @@ const Navigation = () => (
           Home
         </Link>
       </li>
-      <li className={styles.navigationItem}>
+      {/*       <li className={styles.navigationItem}>
         <Link to="/blog/" activeClassName="active">
           Blog
         </Link>
-      </li>
+      </li> */}
       <li className={styles.navigationItem}>
-        <Link to="/people/" activeClassName="active">
-          People
+        <Link to="/about/" activeClassName="active">
+          About
         </Link>
       </li>
     </ul>

@@ -107,7 +107,7 @@ export const pageQuery = graphql`
           }
         }
       }
-      publishDate(formatString: "MMMM Do, YYYY")
+      publishDate(formatString: "MMMM D, YYYY")
       rawDate: publishDate
       heroImage {
         gatsbyImage(layout: FULL_WIDTH, placeholder: BLURRED, width: 1280)

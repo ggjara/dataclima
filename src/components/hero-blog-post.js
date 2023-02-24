@@ -24,11 +24,11 @@ const HeroBlogPost = ({
       )}
       <div className={styles.details}>
         <h1 className={styles.title}>{title}</h1>
-        {content && (
+        {/*         {content && (
           <div className={styles.content}>
             {contentReady ? content : renderRichText(content)}
           </div>
-        )}
+        )} */}
         <Box
           sx={{
             display: 'flex',
@@ -42,18 +42,29 @@ const HeroBlogPost = ({
             },
           }}
         >
-          <Avatar alt={author?.name} src={author?.image.resize.src} />
-          <Link to={`/people/${author?.slug}`}>
-            <Typography
-              sx={{
-                fontStyle: 'italic',
-              }}
-            >
-              {author?.name}
-            </Typography>
-          </Link>{' '}
-          &middot;
-          <time dateTime={rawDate}>{publishDate}</time>
+          <Avatar
+            alt={author?.name}
+            sx={{ width: 30, height: 30 }}
+            src={author?.image.resize.src}
+          />
+
+          <Typography
+            sx={{
+              fontSize: '14px',
+              fontWeight: 'bold',
+              color: 'var(--primary)',
+              ':hover': {
+                textDecoration: 'underline',
+              },
+            }}
+          >
+            {' '}
+            <Link to={`/people/${author?.slug}`}>{author?.name}</Link>
+          </Typography>
+          <Typography sx={{ fontSize: 14 }}>|</Typography>
+          <Typography sx={{ fontSize: 14 }}>
+            <time dateTime={rawDate}>{publishDate}</time>
+          </Typography>
         </Box>
       </div>
     </div>
