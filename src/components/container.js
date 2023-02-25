@@ -1,9 +1,12 @@
 import React from 'react'
+//import Container from '@mui/material/Container'
 
 const Container = ({ children, as = 'div' }) => {
   const Tag = as
 
   return (
+    /* <Container>{children}</Container> */
+
     <Tag
       style={{
         maxWidth: 'var(--size-max-width)',

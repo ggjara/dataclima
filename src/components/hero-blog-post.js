@@ -38,18 +38,19 @@ const HeroBlogPost = ({
             marginRight: 'auto',
             horizontalAlign: 'center',
             '& > :not(style)': {
-              mr: 1.5,
+              mr: 0.5,
             },
           }}
         >
           <Avatar
             alt={author?.name}
-            sx={{ width: 30, height: 30 }}
+            sx={{ width: 30, height: 30, marginRight: 1 }}
             src={author?.image.resize.src}
           />
 
           <Typography
             sx={{
+              paddingLeft: '0.3rem',
               fontSize: '14px',
               fontWeight: '600',
               color: 'var(--primary)',

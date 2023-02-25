@@ -22,6 +22,7 @@ const ArticlePreview = ({ people }) => {
               xsOffset={1}
               xs={10}
               sm={6}
+              smOffset={0}
               md={4}
               lg={3}
               key={person.id}
