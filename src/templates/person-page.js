@@ -37,7 +37,7 @@ class PersonPageTemplate extends React.Component {
     const NameAndSocial = () => {
       return (
         <div>
-          <Box>
+          <Box m="auto">
             <Typography
               sx={{
                 textAlign: {
@@ -75,6 +75,10 @@ class PersonPageTemplate extends React.Component {
                 display: {
                   xs: 'flex',
                   md: 'block',
+                },
+                alignItems: {
+                  xs: 'center',
+                  md: 'left',
                 },
                 justifyContent: {
                   xs: 'center',
@@ -124,7 +128,18 @@ class PersonPageTemplate extends React.Component {
       <Layout location={this.props.location}>
         <Container>
           <Grid2 container spacing={6}>
-            <Grid2 xs={8} xsOffset={2} md={4} mdOffset={2}>
+            <Grid2
+              xs={12}
+              xsOffset={0}
+              md={4}
+              mdOffset={2}
+              sx={{
+                paddingX: {
+                  xs: 15,
+                  md: 0,
+                },
+              }}
+            >
               <GatsbyImage
                 className={{
                   borderRadius: '50%',
@@ -132,6 +147,9 @@ class PersonPageTemplate extends React.Component {
                   transform: 'translateZ(0)',
                 }}
                 style={{
+                  margin: '0 auto',
+                  maxWidth: '100%',
+                  width: '300px',
                   borderRadius: '50%',
                   overflow: 'hidden',
                   transform: 'translateZ(0)',

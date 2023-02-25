@@ -6,6 +6,8 @@ import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
 import ArticlePreview from '../components/article-preview'
+import { ContactEmergency } from '@mui/icons-material'
+import Container from '../components/container'
 
 class BlogIndex extends React.Component {
   render() {
@@ -15,7 +17,9 @@ class BlogIndex extends React.Component {
       <Layout location={this.props.location}>
         <Seo title="Blog" />
         <Hero title="Blog" />
-        <ArticlePreview posts={posts} />
+        <Container>
+          <ArticlePreview posts={posts} />
+        </Container>
       </Layout>
     )
   }

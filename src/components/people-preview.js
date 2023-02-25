@@ -13,7 +13,7 @@ const ArticlePreview = ({ people }) => {
   if (!Array.isArray(people)) return null
 
   return (
-    <Container>
+    <>
       <Grid2 container spacing={6}>
         {people.map((person) => {
           return (
@@ -45,7 +45,7 @@ const ArticlePreview = ({ people }) => {
           )
         })}
       </Grid2>
-    </Container>
+    </>
   )
 }
 

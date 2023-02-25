@@ -35,9 +35,9 @@ class RootIndex extends React.Component {
                 mt: 2,
               }}
             />
+            <ArticlePreview posts={posts} />
           </Container>
         </Box>
-        <ArticlePreview posts={posts} />
       </Layout>
     )
   }

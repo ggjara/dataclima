@@ -6,6 +6,7 @@ import Seo from '../components/seo'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
 import PeoplePreview from '../components/people-preview'
+import Container from '../components/container'
 
 class About extends React.Component {
   render() {
@@ -15,7 +16,9 @@ class About extends React.Component {
       <Layout location={this.props.location}>
         <Seo title="People" />
         <Hero title="People" />
-        <PeoplePreview people={people} />
+        <Container>
+          <PeoplePreview people={people} />
+        </Container>
       </Layout>
     )
   }
