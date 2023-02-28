@@ -170,17 +170,19 @@ class PersonPageTemplate extends React.Component {
               </Typography>
             </Grid2>
           </Grid2>
-        </Container>
 
-        <Container>
-          <Typography variant="h4">Posts</Typography>
+          <Typography sx={{ mt: 6 }} variant="h4">
+            Posts
+          </Typography>
           <Divider
             sx={{
               mt: 2,
+              mb: 6,
             }}
           />
+
+          <ArticlePreview posts={posts} />
         </Container>
-        <ArticlePreview posts={posts} />
       </Layout>
     )
   }

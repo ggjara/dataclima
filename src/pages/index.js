@@ -9,6 +9,7 @@ import Typography from '@mui/material/Typography'
 import Divider from '@mui/material/Divider'
 import Container from '../components/container'
 import Box from '@mui/material/Box'
+import ArticleFeatured from '../components/article-featured'
 
 class RootIndex extends React.Component {
   render() {
@@ -33,9 +34,11 @@ class RootIndex extends React.Component {
             <Divider
               sx={{
                 mt: 2,
+                mb: 6,
               }}
             />
-            <ArticlePreview posts={posts} />
+            <ArticleFeatured post={posts[0]} />
+            <ArticlePreview posts={posts.slice(1)} />
           </Container>
         </Box>
       </Layout>
