@@ -10,7 +10,10 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(
     `
       {
-        allContentfulBlogPost(sort: { publishDate: DESC }) {
+        allContentfulBlogPost(
+          filter: { slug: { nin: "dummy-content" } }
+          sort: { publishDate: DESC }
+        ) {
           nodes {
             title
             slug

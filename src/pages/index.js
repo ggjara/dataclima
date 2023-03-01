@@ -50,7 +50,10 @@ export default RootIndex
 
 export const pageQuery = graphql`
   query HomeQuery {
-    allContentfulBlogPost(sort: { publishDate: DESC }) {
+    allContentfulBlogPost(
+      filter: { slug: { nin: "dummy-content" } }
+      sort: { publishDate: DESC }
+    ) {
       nodes {
         title
         slug
