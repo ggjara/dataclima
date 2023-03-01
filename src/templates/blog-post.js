@@ -17,6 +17,7 @@ import * as styles from './blog-post.module.css'
 import Avatar from '@mui/material/Avatar'
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
+import CodeSnippet from '../components/code-snippet'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -31,12 +32,34 @@ class BlogPostTemplate extends React.Component {
 
     const options = {
       renderNode: {
+        'embedded-asset-block': (node) => {
+          const { gatsbyImageData } = node.data.target
+          if (!gatsbyImageData) {
+            // asset is not an image
+            return null
+          }
+          return <GatsbyImage alt={''} image={gatsbyImageData} />
+        },
+        'embedded-entry-block': (node) => {
+          const { code } = node.data.target
+          if (!code) {
+            // asset is not a code snippet
+            return null
+          }
+          //return code.code
+          return <CodeSnippet code={code.code} />
+        },
+      },
+    }
+
+    /*   const options = {
+      renderNode: {
         [BLOCKS.EMBEDDED_ASSET]: (node) => {
           const { gatsbyImage, description } = node.data.target
           return <GatsbyImage image={getImage(gatsbyImage)} alt={description} />
         },
       },
-    }
+    } */
 
     return (
       <Layout location={this.props.location}>
@@ -117,6 +140,19 @@ export const pageQuery = graphql`
       }
       body {
         raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            __typename
+            gatsbyImageData
+          }
+          ... on ContentfulCodeSnippets {
+            code {
+              code
+            }
+            contentful_id
+          }
+        }
       }
       tags
       description {

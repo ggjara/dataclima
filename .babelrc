@@ -1,4 +1,5 @@
-{
+// Babel initial
+/* {
   "presets": [
     [
       "babel-preset-gatsby",
@@ -8,5 +9,18 @@
       }
     }
     ]
+  ]
+}
+ */
+
+ {
+  "presets": ["babel-preset-gatsby"],
+  "plugins": [
+    ["prismjs", {
+      "languages": ["javascript", "css", "markup"],
+      "plugins": [/* "show-language",  */"copy-to-clipboard"],
+      "theme": "okaidia",
+      "css": true
+    }]
   ]
 }
